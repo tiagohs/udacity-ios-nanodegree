@@ -60,7 +60,7 @@ class DiceViewController: UIViewController {
     /**
     *    dismiss this view controller
     */
-    func dismiss() {
+    @IBAction func dismiss() {
         self.dismiss(animated: true, completion: nil)
     }
 }
