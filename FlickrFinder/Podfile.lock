@@ -1,0 +1,20 @@
+PODS:
+  - Hero (1.4.0)
+  - Kingfisher (5.3.1)
+
+DEPENDENCIES:
+  - Hero
+  - Kingfisher (~> 5.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Hero
+    - Kingfisher
+
+SPEC CHECKSUMS:
+  Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
+  Kingfisher: d9e7e0b209b59b8f9873aa2f37654e81a7beea51
+
+PODFILE CHECKSUM: ddb924350034a02c70a3bff240159cbe0f9b85ea
+
+COCOAPODS: 1.5.2
