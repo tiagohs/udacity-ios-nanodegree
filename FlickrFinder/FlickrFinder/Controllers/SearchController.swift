@@ -50,6 +50,7 @@ class SearchController: BaseController {
     @IBAction func searchClicked(_ sender: Any) {
         if let searchText = self.searchTextField.text {
             self.presenter.searchByPhrase(phrase: searchText)
+            self.showActivityIndicator()
         }
     }
     
@@ -69,6 +70,7 @@ extension SearchController: SearchViewInterface {
         
         performUIUpdatesOnMain {
             self.resultsCollectionView.reloadData()
+            self.hideActivityIndicator()
         }
     }
     

@@ -30,6 +30,7 @@ class HomeController: BaseController {
         self.presenter?.onInit(view: self)
         
         self.presenter?.fetchRecentPhotos()
+        self.showActivityIndicator()
     }
     
     private func setupRecentPhotosCollectionView() {
@@ -54,6 +55,7 @@ extension HomeController: HomeViewInterface {
         
         performUIUpdatesOnMain {
             self.photosCollectionView.reloadData()
+            self.hideActivityIndicator()
         }
         
     }
