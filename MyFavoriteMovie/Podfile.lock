@@ -1,0 +1,24 @@
+PODS:
+  - Hero (1.4.0)
+  - Kingfisher (5.3.1)
+  - ObjectMapper (3.4.2)
+
+DEPENDENCIES:
+  - Hero
+  - Kingfisher (~> 5.0)
+  - ObjectMapper (~> 3.4)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Hero
+    - Kingfisher
+    - ObjectMapper
+
+SPEC CHECKSUMS:
+  Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
+  Kingfisher: d9e7e0b209b59b8f9873aa2f37654e81a7beea51
+  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
+
+PODFILE CHECKSUM: 71a7c91cb314fc7e23f797c66a8463018c38c67b
+
+COCOAPODS: 1.5.2
