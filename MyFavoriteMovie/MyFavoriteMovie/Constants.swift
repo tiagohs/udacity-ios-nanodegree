@@ -71,6 +71,7 @@ struct Constants {
             static let Success = "success"
             static let UserID = "id"
             static let Results = "results"
+            static let Genres = "genres"
         }
         
         // MARK: TMDB ImageSize

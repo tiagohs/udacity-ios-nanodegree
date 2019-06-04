@@ -11,11 +11,24 @@ import UIKit
 // MARK: HomeController
 class HomeController: BaseController {
     
+    let GenresCollectionViewIdentifier = "GenresCollectionViewIdentifier"
+    let MoviesCollectionViewIdentifier = "MoviesCollectionViewIdentifier"
+    
     let GenresCellIdentifier = "GenresCellIdentifier"
-    let MoviesCellIdentifier = "GenresCellIdentifier"
+    let MoviesCellIdentifier = "MoviesCellIdentifier"
     
     @IBOutlet weak var genresCollectionView: UICollectionView!
     @IBOutlet weak var moviesCollectionView: UICollectionView!
+    @IBOutlet weak var genresCollectionViewFlowLayout: UICollectionViewFlowLayout! {
+        didSet {
+            genresCollectionViewFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
+    }
+    @IBOutlet weak var moviesCollectionViewFlowLayout: UICollectionViewFlowLayout! {
+        didSet {
+            moviesCollectionViewFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
+    }
     
     var genres: [Genre]?
     var movies: [Movie]?
@@ -25,9 +38,22 @@ class HomeController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupCollectionViews()
+        
         self.presenter = HomePresenter()
         self.presenter.onInit(view: self)
+        self.presenter.fetchGenres()
+        self.showActivityIndicator()
     }
+    
+    private func setupCollectionViews() {
+        let genreCellNib = UINib(nibName: "GenreCell", bundle: nil)
+        let moviesCellNib = UINib(nibName: "MovieCell", bundle: nil)
+        
+        self.genresCollectionView.register(genreCellNib, forCellWithReuseIdentifier: GenresCellIdentifier)
+        self.moviesCollectionView.register(moviesCellNib, forCellWithReuseIdentifier: MoviesCellIdentifier)
+    }
+    
 }
 
 // MARK: UICollectionViewDelegate, UICollectionViewDataSource
@@ -35,10 +61,12 @@ class HomeController: BaseController {
 extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch collectionView.tag {
-        case 0:
+        let restorationIdentifier = collectionView.restorationIdentifier
+        
+        switch restorationIdentifier {
+        case GenresCollectionViewIdentifier:
             return genres?.count ?? 0
-        case 1:
+        case MoviesCollectionViewIdentifier:
             return movies?.count ?? 0
         default:
             return 0
@@ -46,10 +74,12 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch collectionView.tag {
-        case 0:
+        let restorationIdentifier = collectionView.restorationIdentifier
+        
+        switch restorationIdentifier {
+        case GenresCollectionViewIdentifier:
             return self.bindGenresCell(collectionView, cellForItemAt: indexPath)
-        case 1:
+        case MoviesCollectionViewIdentifier:
             return self.bindMoviesCell(collectionView, cellForItemAt: indexPath)
         default:
             return UICollectionViewCell()
@@ -78,6 +108,35 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         return UICollectionViewCell()
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let restorationIdentifier = collectionView.restorationIdentifier
+        
+        switch restorationIdentifier {
+        case GenresCollectionViewIdentifier:
+            if let genres = self.genres {
+                let selectedGenre = genres[indexPath.row]
+                
+                let newGenres = genres.map({ (genre) -> Genre in
+                    genre.isSelected = selectedGenre.id == genre.id
+                    
+                    return genre
+                })
+                
+                self.genres = newGenres
+                self.genresCollectionView.reloadData()
+                
+                self.presenter.fetchMoviesByGenre(genre: selectedGenre)
+                self.showActivityIndicator()
+            }
+        case MoviesCollectionViewIdentifier:
+            return
+        default:
+            return
+        }
+        
+    }
 }
 
 // MARK: HomeViewInterface
@@ -87,13 +146,20 @@ extension HomeController: HomeViewInterface {
     func bindMovies(movies: [Movie]) {
         self.movies = movies
         
-        self.moviesCollectionView.reloadData()
+        performUIUpdatesOnMain {
+            self.moviesCollectionView.reloadData()
+            self.hideActivityIndicator()
+        }
     }
     
     func bindGenres(genres: [Genre]) {
         self.genres = genres
         
-        self.genresCollectionView.reloadData()
+        performUIUpdatesOnMain {
+            self.genresCollectionView.reloadData()
+        }
+        
+        self.presenter.fetchPopularMovies()
     }
     
 }

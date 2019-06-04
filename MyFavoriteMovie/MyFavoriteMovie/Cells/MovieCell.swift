@@ -21,6 +21,19 @@ class MovieCell: UICollectionViewCell {
     }
     var genres: [Genre]?
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            contentView.leftAnchor.constraint(equalTo: leftAnchor),
+            contentView.rightAnchor.constraint(equalTo: rightAnchor),
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+    }
+    
     private func bindMovie(_ movie: Movie) {
         titleLabel.text = movie.title
         yearLabel.text = ViewUtils.dateFrom(string: movie.releaseDate)?.year

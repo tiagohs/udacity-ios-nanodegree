@@ -36,6 +36,8 @@ class HomePresenter: HomePresenterInterface {
                 "name": "Populares" as AnyObject
             ])
             
+            popularItem.isSelected = true
+            
             self.view.bindGenres(genres: [popularItem] + genres )
         }
     }
@@ -51,7 +53,7 @@ class HomePresenter: HomePresenterInterface {
             return
         }
         
-        self.movieService.fetchMoviesBy(genreID: id, page: 0) { (movies, error) in
+        self.movieService.fetchMoviesBy(genreID: id, page: 1) { (movies, error) in
             guard error == nil else {
                 self.view?.onError(message: error?.localizedDescription ?? "Erro ao buscar os filmes, tente novamente.")
                 return

@@ -33,7 +33,6 @@
                                 <rect key="frame" x="20" y="298" width="335" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="270" id="UeV-Uj-9YZ"/>
                                     <constraint firstAttribute="height" constant="40" id="mvr-lm-55r"/>
                                 </constraints>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -191,14 +190,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="13Z-AT-ylU">
-                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="GenresCollectionViewIdentifier" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="13Z-AT-ylU">
+                                <rect key="frame" x="0.0" y="80" width="375" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="375" id="mQP-TI-5rQ"/>
                                     <constraint firstAttribute="height" constant="40" id="nk8-8m-bTn"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SOq-f9-8LG">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SOq-f9-8LG">
                                     <size key="itemSize" width="50" height="40"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -210,8 +209,8 @@
                                     <outlet property="delegate" destination="8iF-u4-9Y3" id="NM9-JT-aUW"/>
                                 </connections>
                             </collectionView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dWk-Eq-SeH">
-                                <rect key="frame" x="0.0" y="112" width="375" height="506"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" restorationIdentifier="MoviesCollectionViewIdentifier" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dWk-Eq-SeH">
+                                <rect key="frame" x="0.0" y="128" width="375" height="490"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="adq-Ga-XsH">
                                     <size key="itemSize" width="50" height="50"/>
@@ -220,6 +219,10 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="8iF-u4-9Y3" id="MdU-JK-iXd"/>
+                                    <outlet property="delegate" destination="8iF-u4-9Y3" id="Br0-IH-7kw"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -230,7 +233,7 @@
                             <constraint firstItem="dWk-Eq-SeH" firstAttribute="bottom" secondItem="Whe-li-B2R" secondAttribute="bottom" id="Lyu-qv-MMH"/>
                             <constraint firstItem="dWk-Eq-SeH" firstAttribute="leading" secondItem="Whe-li-B2R" secondAttribute="leading" id="eJ7-Z0-rgL"/>
                             <constraint firstItem="13Z-AT-ylU" firstAttribute="leading" secondItem="Whe-li-B2R" secondAttribute="leading" id="fqO-vY-lUp"/>
-                            <constraint firstItem="13Z-AT-ylU" firstAttribute="top" secondItem="Whe-li-B2R" secondAttribute="top" id="zNI-9G-PH8"/>
+                            <constraint firstItem="13Z-AT-ylU" firstAttribute="top" secondItem="Whe-li-B2R" secondAttribute="top" constant="16" id="zNI-9G-PH8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Whe-li-B2R"/>
                     </view>
@@ -241,7 +244,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="genresCollectionView" destination="13Z-AT-ylU" id="fms-b1-Ncu"/>
+                        <outlet property="genresCollectionViewFlowLayout" destination="SOq-f9-8LG" id="xGl-J8-ttb"/>
                         <outlet property="moviesCollectionView" destination="dWk-Eq-SeH" id="piw-ez-bOM"/>
+                        <outlet property="moviesCollectionViewFlowLayout" destination="adq-Ga-XsH" id="oGi-Q3-Rdd"/>
                         <segue destination="dwe-GD-Q6d" kind="presentation" id="owI-hc-ARV"/>
                     </connections>
                 </viewController>
@@ -259,6 +264,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.4039215686" green="0.2274509804" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" red="0.4039215686" green="0.2274509804" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
@@ -303,11 +309,12 @@
         <scene sceneID="8eR-tm-EXZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hht-8h-b1W" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="cIK-nW-mkm"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="HomeIcon" id="cIK-nW-mkm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cUH-rB-mk9">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -322,11 +329,12 @@
         <scene sceneID="mow-Z2-cP0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dX6-SP-ALB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" id="DbH-ZR-nph"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="HeartFilled" id="DbH-ZR-nph"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1C4-nE-2in">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -374,6 +382,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kKj-KF-dOX">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -386,6 +395,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="HeartFilled" width="32" height="32"/>
+        <image name="HomeIcon" width="32" height="32"/>
         <image name="LogoutIcon" width="29" height="29"/>
         <image name="MovieIcon" width="256" height="256"/>
     </resources>

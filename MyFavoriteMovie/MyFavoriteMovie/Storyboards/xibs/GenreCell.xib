@@ -18,42 +18,61 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GenreCell" customModule="MyFavoriteMovie" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="106" height="29"/>
+            <rect key="frame" x="0.0" y="0.0" width="126" height="29"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sbb-nK-72W">
-                    <rect key="frame" x="0.0" y="0.0" width="106" height="29"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sbb-nK-72W">
+                    <rect key="frame" x="0.0" y="0.0" width="126" height="29"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilb-83-B2U">
-                            <rect key="frame" x="0.0" y="0.0" width="106" height="29"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilb-83-B2U">
+                            <rect key="frame" x="10" y="0.0" width="116" height="29"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="29" id="PYf-dg-wjn"/>
+                            </constraints>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                             <state key="normal">
-                                <color key="titleColor" red="0.40392156862745099" green="0.22745098039215686" blue="0.71764705882352942" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                             </state>
                             <state key="selected" title="Button">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="20"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.4039215686" green="0.2274509804" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </button>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="ilb-83-B2U" secondAttribute="bottom" id="CaO-G5-X2m"/>
+                        <constraint firstItem="ilb-83-B2U" firstAttribute="leading" secondItem="sbb-nK-72W" secondAttribute="leading" constant="10" id="DZd-3d-XT4"/>
+                        <constraint firstAttribute="trailing" secondItem="ilb-83-B2U" secondAttribute="trailing" id="fHx-IP-nTf"/>
+                        <constraint firstItem="ilb-83-B2U" firstAttribute="top" secondItem="sbb-nK-72W" secondAttribute="top" id="x3X-N3-KTr"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="sbb-nK-72W" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="5IY-Hj-tNu"/>
+                <constraint firstItem="sbb-nK-72W" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="KO6-dB-fRg"/>
+                <constraint firstItem="sbb-nK-72W" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="SPX-Z5-o5c"/>
+                <constraint firstItem="sbb-nK-72W" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="x8h-YC-Qhp"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="genreButton" destination="ilb-83-B2U" id="fbw-qh-cPr"/>
             </connections>
-            <point key="canvasLocation" x="-76.799999999999997" y="89.505247376311857"/>
+            <point key="canvasLocation" x="-60.799999999999997" y="89.505247376311857"/>
         </view>
     </objects>
 </document>

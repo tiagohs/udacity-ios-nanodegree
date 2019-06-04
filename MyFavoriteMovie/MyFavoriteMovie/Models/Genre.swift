@@ -11,6 +11,7 @@ import Foundation
 class Genre {
     var id: Int?
     var name: String?
+    var isSelected: Bool = false
     
     init(dictionary: [String:AnyObject]) {
         id = dictionary[Constants.TMDB.ResponseKeys.Genre.Id] as? Int

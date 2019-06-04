@@ -116,9 +116,15 @@ class BaseService {
             return
         }
         
-        // let movies = Genre.genresFromResults(parsedResult as? [[String:AnyObject]])
+        guard let results = parsedResult[Constants.TMDB.ResponseKeys.Genres] as? [[String:AnyObject]] else {
+            print("Cannot find key '\(Constants.TMDB.ResponseKeys.Genres)' in \(String(describing: parsedResult))")
+            completionHandler(nil, DefaultError(message: "Cannot find key '\(Constants.TMDB.ResponseKeys.Genres)' in \(String(describing: parsedResult))"))
+            return
+        }
         
-        completionHandler(nil, nil)
+        let genres = Genre.genresFromResults(results)
+        
+        completionHandler(genres, nil)
     }
     
 }

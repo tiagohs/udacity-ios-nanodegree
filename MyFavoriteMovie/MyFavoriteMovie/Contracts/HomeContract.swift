@@ -19,5 +19,6 @@ protocol HomePresenterInterface {
     
     func onInit(view: HomeViewInterface)
     func fetchMoviesByGenre(genre: Genre)
+    func fetchGenres()
     func fetchPopularMovies()
 }
