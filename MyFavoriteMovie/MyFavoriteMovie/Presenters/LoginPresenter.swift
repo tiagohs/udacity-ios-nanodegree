@@ -11,12 +11,12 @@ import Foundation
 class LoginPresenter: LoginPresenterInterface {
     
     var view: LoginViewInterface!
-    var userService: UserService!
+    var authService: AuthService!
     var appDelegate: AppDelegate!
     
     func onInit(view: LoginViewInterface, appDelegate: AppDelegate) {
         self.view = view
-        self.userService = UserService()
+        self.authService = AuthService()
         self.appDelegate = appDelegate
     }
     
@@ -27,7 +27,7 @@ class LoginPresenter: LoginPresenterInterface {
     }
     
     private func requestToken(_ completionHandler: @escaping (String) -> Void) {
-        self.userService.createToken { (requestToken, error) in
+        self.authService.createToken { (requestToken, error) in
             guard error == nil else {
                 self.view?.onError(message: "Erro ao realizar login, tente novamente.")
                 self.view?.setUIEnabled(true)
@@ -45,7 +45,7 @@ class LoginPresenter: LoginPresenterInterface {
     }
     
     private func loginWithToken(_ token: String,_ username: String,_ password: String) {
-        self.userService.loginWithToken(token, username, password) { (loginWithSuccess, error) in
+        self.authService.loginWithToken(token, username, password) { (loginWithSuccess, error) in
             guard error == nil else {
                 self.view?.onError(message: "Erro ao realizar login, tente novamente.")
                 self.view?.setUIEnabled(true)
@@ -63,7 +63,7 @@ class LoginPresenter: LoginPresenterInterface {
     }
     
     private func getSessionID(_ token: String) {
-        self.userService.getSessionID(token, { (sessionID, error) in
+        self.authService.getSessionID(token, { (sessionID, error) in
             guard error == nil else {
                 self.view?.onError(message: "Erro ao realizar login, tente novamente.")
                 self.view?.setUIEnabled(true)
@@ -82,7 +82,7 @@ class LoginPresenter: LoginPresenterInterface {
     }
     
     private func getUserID(_ sessionID: String) {
-        self.userService.getUserID(sessionID) { (userID, error) in
+        self.authService.getUserID(sessionID) { (userID, error) in
             guard error == nil else {
                 self.view?.onError(message: "Erro ao realizar login, tente novamente.")
                 self.view?.setUIEnabled(true)

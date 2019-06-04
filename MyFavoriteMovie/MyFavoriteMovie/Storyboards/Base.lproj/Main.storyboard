@@ -247,7 +247,7 @@
                         <outlet property="genresCollectionViewFlowLayout" destination="SOq-f9-8LG" id="xGl-J8-ttb"/>
                         <outlet property="moviesCollectionView" destination="dWk-Eq-SeH" id="piw-ez-bOM"/>
                         <outlet property="moviesCollectionViewFlowLayout" destination="adq-Ga-XsH" id="oGi-Q3-Rdd"/>
-                        <segue destination="dwe-GD-Q6d" kind="presentation" id="owI-hc-ARV"/>
+                        <segue destination="uiz-cv-0dp" kind="show" identifier="MovieHomeSegueIdentifier" id="41J-cz-Wp8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AU3-w4-dMF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -285,11 +285,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="gUJ-N7-QFD">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="186" id="gUJ-N7-QFD">
+                                <rect key="frame" x="0.0" y="28" width="375" height="186"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gUJ-N7-QFD" id="g6U-pS-M7v">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="185.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -299,11 +299,15 @@
                             <outlet property="delegate" destination="uiz-cv-0dp" id="Fiy-lZ-wOJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="GP5-fl-xGb"/>
+                    <navigationItem key="navigationItem" id="GP5-fl-xGb">
+                        <barButtonItem key="rightBarButtonItem" image="LogoutIcon" id="69c-0p-Ms3">
+                            <color key="tintColor" red="0.4039215686" green="0.2274509804" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwr-fp-PIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4788" y="239.73013493253376"/>
+            <point key="canvasLocation" x="4074" y="239"/>
         </scene>
         <!--Home-->
         <scene sceneID="8eR-tm-EXZ">
@@ -338,60 +342,60 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="mpG-mI-CHZ" kind="relationship" relationship="rootViewController" id="m5F-dZ-Sg8"/>
+                        <segue destination="Xqu-25-g8I" kind="relationship" relationship="rootViewController" id="H6x-mQ-CKM"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xd9-vT-JmL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1925.5999999999999" y="651.72413793103453"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="fP5-Nc-zBW">
+        <!--Favorites Controller-->
+        <scene sceneID="LaY-tT-jZ8">
             <objects>
-                <tableViewController id="mpG-mI-CHZ" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1ul-He-VY9">
+                <viewController id="Xqu-25-g8I" customClass="FavoritesController" customModule="MyFavoriteMovie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WsQ-XB-4rz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2UP-19-1NA">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="C7B-8r-n2k">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Xqu-25-g8I" id="Nnz-lJ-5KJ"/>
+                                    <outlet property="delegate" destination="Xqu-25-g8I" id="0K7-Uh-g27"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="jNs-FW-JnM">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jNs-FW-JnM" id="Ldi-S4-4Nk">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="mpG-mI-CHZ" id="Zln-xn-OFr"/>
-                            <outlet property="delegate" destination="mpG-mI-CHZ" id="22w-dY-MYD"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="Ddm-hf-YJu"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D0V-2f-X6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2869" y="652"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="sAN-1x-TUU">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dwe-GD-Q6d" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kKj-KF-dOX">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                        <constraints>
+                            <constraint firstItem="2UP-19-1NA" firstAttribute="leading" secondItem="g3Q-ej-iR6" secondAttribute="leading" id="an9-sH-cLP"/>
+                            <constraint firstItem="2UP-19-1NA" firstAttribute="top" secondItem="g3Q-ej-iR6" secondAttribute="top" id="gOk-CC-BpF"/>
+                            <constraint firstItem="2UP-19-1NA" firstAttribute="bottom" secondItem="g3Q-ej-iR6" secondAttribute="bottom" id="mzX-fk-8ie"/>
+                            <constraint firstItem="2UP-19-1NA" firstAttribute="trailing" secondItem="g3Q-ej-iR6" secondAttribute="trailing" id="y9N-GX-xt4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="g3Q-ej-iR6"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="d9H-Sz-08m">
+                        <barButtonItem key="rightBarButtonItem" image="LogoutIcon" id="sTi-82-hpC">
+                            <color key="tintColor" red="0.4039215686" green="0.2274509804" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <segue destination="uiz-cv-0dp" kind="relationship" relationship="rootViewController" id="vMu-nl-laQ"/>
+                        <outlet property="favoriteMoviesCollectionView" destination="2UP-19-1NA" id="YjG-Kb-71R"/>
+                        <outlet property="favoriteMoviesCollectionViewFlowLayout" destination="C7B-8r-n2k" id="hKF-Lb-5Kq"/>
+                        <segue destination="uiz-cv-0dp" kind="show" identifier="MovieFavoriteSegueIdentifier" id="ZWe-7A-c3L"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="l0P-RC-dLa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iEO-xu-7i9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3848.8000000000002" y="239.73013493253376"/>
+            <point key="canvasLocation" x="2864.8000000000002" y="651.72413793103453"/>
         </scene>
     </scenes>
     <resources>
@@ -400,4 +404,7 @@
         <image name="LogoutIcon" width="29" height="29"/>
         <image name="MovieIcon" width="256" height="256"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="41J-cz-Wp8"/>
+    </inferredMetricsTieBreakers>
 </document>

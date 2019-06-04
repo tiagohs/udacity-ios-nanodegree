@@ -17,7 +17,7 @@ protocol FavoritesViewInterface {
 
 protocol FavoritesPresenterInterface {
     
-    func onInit(view: FavoritesViewInterface)
-    func fetchFavoriteMovies(userID: Int?, sessionID: String?)
+    func onInit(view: FavoritesViewInterface, appDelegate: AppDelegate)
+    func fetchFavoriteMovies()
 }
 

@@ -58,7 +58,7 @@ class BaseService {
         }
         
         guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-            completionHandler(nil, DefaultError(message: "There was an error with your request: \(error!)"))
+            completionHandler(nil, DefaultError(message: "There was an error with your request: \(String(describing: error))"))
             return
         }
         
@@ -99,7 +99,7 @@ class BaseService {
         }
         
         guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-            completionHandler(nil, DefaultError(message: "There was an error with your request: \(error!)"))
+            completionHandler(nil, DefaultError(message: "There was an error with your request: \(String(describing: error))"))
             return
         }
         

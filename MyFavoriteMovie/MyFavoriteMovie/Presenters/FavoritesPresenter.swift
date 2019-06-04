@@ -11,24 +11,27 @@ import Foundation
 class FavoritesPresenter: FavoritesPresenterInterface {
     
     var view: FavoritesViewInterface!
-    var movieService: MovieService!
+    var accountService: AccountService!
+    var appDelegate: AppDelegate!
     
-    func onInit(view: FavoritesViewInterface) {
+    func onInit(view: FavoritesViewInterface, appDelegate: AppDelegate) {
         self.view = view
-        self.movieService = MovieService()
+        self.appDelegate = appDelegate
+        self.accountService = AccountService()
     }
     
-    func fetchFavoriteMovies(userID: Int?, sessionID: String?) {
-        guard let userID = userID else {
+    func fetchFavoriteMovies() {
+        
+        guard let userID = appDelegate.userID else {
             self.view?.onError(message: "Erro ao buscar os filmes, tente novamente.")
             return
         }
-        guard let sessionID = sessionID else {
+        guard let sessionID = appDelegate.sessionID else {
             self.view?.onError(message: "Erro ao buscar os filmes, tente novamente.")
             return
         }
         
-        self.movieService.fetchFavoriteMovies(sessionID: sessionID, userID: userID, page: 0) { (movies, error) in
+        self.accountService.fetchFavoriteMovies(sessionID: sessionID, userID: userID, page: 1) { (movies, error) in
             guard error == nil else {
                 self.view?.onError(message: error?.localizedDescription ?? "Erro ao buscar os filmes, tente novamente.")
                 return

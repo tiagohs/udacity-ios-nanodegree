@@ -10,6 +10,21 @@ import UIKit
 
 class MovieDetailController: BaseTableController {
     
+    var movie: Movie?
+    var presenter: MovieDetailPresenterInterface!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        self.presenter = MovieDetailPresenter()
+        self.presenter.onInit(view: self, appDelegate: appDelegate)
+        
+        if let movie = self.movie {
+            self.presenter.checkMovieState(movie: movie)
+        }
+    }
 }
 
 extension MovieDetailController {
@@ -20,5 +35,12 @@ extension MovieDetailController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
+    }
+}
+
+extension MovieDetailController: MovieDetailViewInterface {
+    
+    func bindMovie(movie: Movie) {
+        //
     }
 }

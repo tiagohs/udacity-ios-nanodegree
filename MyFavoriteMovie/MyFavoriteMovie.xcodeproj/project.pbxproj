@@ -42,9 +42,12 @@
 		A2804E0022A5B28600ABF8F1 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2804DFF22A5B28600ABF8F1 /* HomePresenter.swift */; };
 		A2804E0222A5B29F00ABF8F1 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2804E0122A5B29F00ABF8F1 /* LoginPresenter.swift */; };
 		A2804E0422A5B2C100ABF8F1 /* FavoritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2804E0322A5B2C100ABF8F1 /* FavoritesPresenter.swift */; };
-		A2804E0622A5D0A700ABF8F1 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2804E0522A5D0A700ABF8F1 /* UserService.swift */; };
+		A2804E0622A5D0A700ABF8F1 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2804E0522A5D0A700ABF8F1 /* AuthService.swift */; };
 		A2804E0A22A6B54900ABF8F1 /* UITools.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2804E0922A6B54900ABF8F1 /* UITools.swift */; };
 		A2804E0D22A6CC5000ABF8F1 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2804E0C22A6CC5000ABF8F1 /* UIButton.swift */; };
+		A2804E1022A72DC800ABF8F1 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2804E0F22A72DC800ABF8F1 /* AccountService.swift */; };
+		A2804E1222A72FAC00ABF8F1 /* MovieDetailPresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2804E1122A72FAC00ABF8F1 /* MovieDetailPresenterInterface.swift */; };
+		A2804E1422A7305600ABF8F1 /* MovieDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2804E1322A7305600ABF8F1 /* MovieDetailPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,9 +101,12 @@
 		A2804DFF22A5B28600ABF8F1 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		A2804E0122A5B29F00ABF8F1 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		A2804E0322A5B2C100ABF8F1 /* FavoritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPresenter.swift; sourceTree = "<group>"; };
-		A2804E0522A5D0A700ABF8F1 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		A2804E0522A5D0A700ABF8F1 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		A2804E0922A6B54900ABF8F1 /* UITools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITools.swift; sourceTree = "<group>"; };
 		A2804E0C22A6CC5000ABF8F1 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		A2804E0F22A72DC800ABF8F1 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		A2804E1122A72FAC00ABF8F1 /* MovieDetailPresenterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailPresenterInterface.swift; sourceTree = "<group>"; };
+		A2804E1322A7305600ABF8F1 /* MovieDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailPresenter.swift; sourceTree = "<group>"; };
 		C66613A4FA0FF3A5DDBD2287 /* Pods-MyFavoriteMovie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFavoriteMovie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFavoriteMovie/Pods-MyFavoriteMovie.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,6 +186,7 @@
 				A2804DFF22A5B28600ABF8F1 /* HomePresenter.swift */,
 				A2804E0122A5B29F00ABF8F1 /* LoginPresenter.swift */,
 				A2804E0322A5B2C100ABF8F1 /* FavoritesPresenter.swift */,
+				A2804E1322A7305600ABF8F1 /* MovieDetailPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -199,7 +206,8 @@
 				A2804DC622A471B300ABF8F1 /* BaseService.swift */,
 				A2804DFB22A5A0AF00ABF8F1 /* MovieService.swift */,
 				A2804DFD22A5AEA600ABF8F1 /* GenreService.swift */,
-				A2804E0522A5D0A700ABF8F1 /* UserService.swift */,
+				A2804E0522A5D0A700ABF8F1 /* AuthService.swift */,
+				A2804E0F22A72DC800ABF8F1 /* AccountService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -210,6 +218,7 @@
 				A2804DF322A597E900ABF8F1 /* HomeContract.swift */,
 				A2804DF522A597FD00ABF8F1 /* LoginContract.swift */,
 				A2804DF722A5980E00ABF8F1 /* FavoriteContract.swift */,
+				A2804E1122A72FAC00ABF8F1 /* MovieDetailPresenterInterface.swift */,
 			);
 			path = Contracts;
 			sourceTree = "<group>";
@@ -447,6 +456,7 @@
 				A2804DBF22A470D600ABF8F1 /* DefaultErrors.swift in Sources */,
 				A2804DCC22A472D400ABF8F1 /* ImageUtils.swift in Sources */,
 				A2804DC522A4718D00ABF8F1 /* BaseController.swift in Sources */,
+				A2804E1422A7305600ABF8F1 /* MovieDetailPresenter.swift in Sources */,
 				A2804DA222A46FB900ABF8F1 /* LoginController.swift in Sources */,
 				A2804DF022A585B600ABF8F1 /* Genre.swift in Sources */,
 				A2804DEC22A5756700ABF8F1 /* GenreCell.swift in Sources */,
@@ -466,8 +476,10 @@
 				A2804DE222A4987A00ABF8F1 /* FavoritesController.swift in Sources */,
 				A2804DCA22A471E900ABF8F1 /* Constants.swift in Sources */,
 				A2804DF222A58B9700ABF8F1 /* TMDBUtils.swift in Sources */,
-				A2804E0622A5D0A700ABF8F1 /* UserService.swift in Sources */,
+				A2804E0622A5D0A700ABF8F1 /* AuthService.swift in Sources */,
 				A2804E0022A5B28600ABF8F1 /* HomePresenter.swift in Sources */,
+				A2804E1222A72FAC00ABF8F1 /* MovieDetailPresenterInterface.swift in Sources */,
+				A2804E1022A72DC800ABF8F1 /* AccountService.swift in Sources */,
 				A2804DD022A4739800ABF8F1 /* DateFormatTransform.swift in Sources */,
 				A2804DFC22A5A0AF00ABF8F1 /* MovieService.swift in Sources */,
 			);

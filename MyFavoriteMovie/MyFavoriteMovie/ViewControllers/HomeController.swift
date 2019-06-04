@@ -11,6 +11,8 @@ import UIKit
 // MARK: HomeController
 class HomeController: BaseController {
     
+    let MovieHomeSegueIdentifier = "MovieHomeSegueIdentifier"
+    
     let GenresCollectionViewIdentifier = "GenresCollectionViewIdentifier"
     let MoviesCollectionViewIdentifier = "MoviesCollectionViewIdentifier"
     
@@ -52,6 +54,12 @@ class HomeController: BaseController {
         
         self.genresCollectionView.register(genreCellNib, forCellWithReuseIdentifier: GenresCellIdentifier)
         self.moviesCollectionView.register(moviesCellNib, forCellWithReuseIdentifier: MoviesCellIdentifier)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let movie = sender as? Movie, let destination = segue.destination as? MovieDetailController {
+            destination.movie = movie
+        }
     }
     
 }
@@ -131,7 +139,11 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
                 self.showActivityIndicator()
             }
         case MoviesCollectionViewIdentifier:
-            return
+            if let movies = self.movies {
+                let movie = movies[indexPath.row]
+                
+                performSegue(withIdentifier: MovieHomeSegueIdentifier, sender: movie)
+            }
         default:
             return
         }

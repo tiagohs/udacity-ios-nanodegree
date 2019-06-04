@@ -30,16 +30,4 @@ class MovieService: BaseService {
         }
     }
     
-    func fetchFavoriteMovies(sessionID: String, userID: Int, page: Int, completionHandler: @escaping ([Movie]?, Error?) -> Void) {
-        let parameters = self.baseParameters.merge(with: [
-            Constants.TMDB.ParameterKeys.Page: String(page),
-            Constants.TMDB.ParameterKeys.SessionID: sessionID
-        ])
-        
-        let url = tmdbURLFromParameters(parameters, withPathExtension: "/account/\(userID)/favorite/movies")
-        
-        doRequest(with: url) { (data, response, error) in
-            self.onMoviesRequestResponse(response, data, error, completionHandler)
-        }
-    }
 }
