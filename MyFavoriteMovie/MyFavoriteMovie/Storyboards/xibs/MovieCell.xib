@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MovieCell" customModule="MyFavoriteMovie" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="454" height="192"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s5q-of-8vS">
+                    <rect key="frame" x="0.0" y="0.0" width="454" height="192"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lXr-4g-sXO">
+                            <rect key="frame" x="8" y="10" width="132" height="172"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="172" id="CZm-xp-aqu"/>
+                                <constraint firstAttribute="width" constant="132" id="RBA-89-iWb"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Batman Vs Superman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rt4-XA-iJO">
+                            <rect key="frame" x="148" y="10" width="259" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="he0-CK-Dwm"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action | Adventure | Drama" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEJ-3T-ANv">
+                            <rect key="frame" x="148" y="41" width="296" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="Stk-LW-akr"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVa-PI-wYQ">
+                            <rect key="frame" x="148" y="162" width="298" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="3wx-5J-SYH"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRq-8x-VF7">
+                            <rect key="frame" x="412" y="10" width="32" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="QBV-vX-HRh"/>
+                                <constraint firstAttribute="width" constant="32" id="aD2-eX-O0M"/>
+                            </constraints>
+                            <state key="normal" image="HeartOutline"/>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="lXr-4g-sXO" firstAttribute="leading" secondItem="s5q-of-8vS" secondAttribute="leading" constant="8" id="6AH-C8-5mT"/>
+                        <constraint firstItem="rt4-XA-iJO" firstAttribute="leading" secondItem="lXr-4g-sXO" secondAttribute="trailing" constant="8" id="BkI-wc-3Q0"/>
+                        <constraint firstAttribute="trailing" secondItem="gVa-PI-wYQ" secondAttribute="trailing" constant="8" id="T28-Qk-ccW"/>
+                        <constraint firstItem="WRq-8x-VF7" firstAttribute="top" secondItem="s5q-of-8vS" secondAttribute="top" constant="10" id="Xbv-ff-Y6b"/>
+                        <constraint firstAttribute="trailing" secondItem="MEJ-3T-ANv" secondAttribute="trailing" constant="10" id="f6f-4e-nrZ"/>
+                        <constraint firstItem="lXr-4g-sXO" firstAttribute="top" secondItem="s5q-of-8vS" secondAttribute="top" constant="10" id="hpE-IX-IA9"/>
+                        <constraint firstItem="MEJ-3T-ANv" firstAttribute="leading" secondItem="lXr-4g-sXO" secondAttribute="trailing" constant="8" id="ijG-g5-VXi"/>
+                        <constraint firstItem="rt4-XA-iJO" firstAttribute="top" secondItem="s5q-of-8vS" secondAttribute="top" constant="10" id="k5i-jK-8sh"/>
+                        <constraint firstAttribute="trailing" secondItem="WRq-8x-VF7" secondAttribute="trailing" constant="10" id="lpK-CL-tGO"/>
+                        <constraint firstItem="MEJ-3T-ANv" firstAttribute="top" secondItem="rt4-XA-iJO" secondAttribute="bottom" constant="6" id="o4q-z9-X4r"/>
+                        <constraint firstItem="gVa-PI-wYQ" firstAttribute="leading" secondItem="lXr-4g-sXO" secondAttribute="trailing" constant="8" id="odD-QF-tBu"/>
+                        <constraint firstAttribute="bottom" secondItem="lXr-4g-sXO" secondAttribute="bottom" constant="10" id="rSm-su-oOK"/>
+                        <constraint firstAttribute="bottom" secondItem="gVa-PI-wYQ" secondAttribute="bottom" constant="10" id="wjC-E8-Tv1"/>
+                        <constraint firstItem="WRq-8x-VF7" firstAttribute="leading" secondItem="rt4-XA-iJO" secondAttribute="trailing" constant="5" id="yVy-0F-xjD"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="s5q-of-8vS" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="IaR-Ka-aQq"/>
+                <constraint firstItem="s5q-of-8vS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="NOV-CZ-xT1"/>
+                <constraint firstItem="s5q-of-8vS" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="TwB-nx-fHi"/>
+                <constraint firstItem="s5q-of-8vS" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="jdS-tv-tdp"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="genresLabel" destination="MEJ-3T-ANv" id="oNS-LY-Cgp"/>
+                <outlet property="posterImage" destination="lXr-4g-sXO" id="zPL-hO-cFI"/>
+                <outlet property="titleLabel" destination="rt4-XA-iJO" id="A1d-YT-vEy"/>
+                <outlet property="yearLabel" destination="gVa-PI-wYQ" id="llp-0k-Jpk"/>
+            </connections>
+            <point key="canvasLocation" x="116.8" y="-165.51724137931035"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="HeartOutline" width="32" height="32"/>
+    </resources>
+</document>

@@ -10,6 +10,24 @@ import UIKit
 
 class ViewUtils {
     
+    static func openLink(link: String) {
+        if let encoded = link.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+            let myURL = URL(string: encoded) {
+            UIApplication.shared.open(myURL)
+        }
+    }
+    
+    static func dateFrom(string: String?) -> Date? {
+        guard let string = string else {
+            return nil
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        return dateFormatter.date(from: string)
+    }
+    
     static func UIColorFromRGB(rgbValue: UInt) -> UIColor {
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,

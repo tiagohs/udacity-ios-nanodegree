@@ -13,10 +13,14 @@ class BaseController: UIViewController {
     var activityIndicatorContainer: UIView!
     var activityIndicator: UIActivityIndicatorView!
     
-    func onError(message: String) {
+    var keyboardOnScreen = false
+    
+    public func onError(message: String) {
         let alert = UIAlertController(title: "Erro", message: message, preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alert) in
+            self.hideActivityIndicator()
+        }))
         
         self.present(alert, animated: true)
     }
@@ -50,10 +54,45 @@ class BaseController: UIViewController {
     }
     
     func hideActivityIndicator() {
-        activityIndicator.stopAnimating()
-        activityIndicatorContainer.removeFromSuperview()
+        activityIndicator?.stopAnimating()
+        activityIndicatorContainer?.removeFromSuperview()
         
         activityIndicator = nil
         activityIndicatorContainer = nil
     }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if !keyboardOnScreen {
+            view.frame.origin.y -= keyboardHeight(notification)
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        if keyboardOnScreen {
+            view.frame.origin.y += keyboardHeight(notification)
+        }
+    }
+    
+    @objc func keyboardDidShow(_ notification: Notification) {
+        keyboardOnScreen = true
+    }
+    
+    @objc func keyboardDidHide(_ notification: Notification) {
+        keyboardOnScreen = false
+    }
+    
+    private func keyboardHeight(_ notification: Notification) -> CGFloat {
+        let userInfo = (notification as NSNotification).userInfo
+        let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
+        return keyboardSize.cgRectValue.height
+    }
+    
+    func subscribeToNotification(_ notification: NSNotification.Name, selector: Selector) {
+        NotificationCenter.default.addObserver(self, selector: selector, name: notification, object: nil)
+    }
+    
+    func unsubscribeFromAllNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
 }
