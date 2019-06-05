@@ -16,11 +16,11 @@ class LoginController: BaseController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    var presenter: LoginPresenterInterface!
-    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
     }
+    
+    var presenter: LoginPresenterInterface!
     
     override func viewDidLoad() {
         super.viewDidLoad()

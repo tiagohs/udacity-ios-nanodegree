@@ -23,19 +23,21 @@ class FavoritesController: BaseController {
     var presenter: FavoritesPresenterInterface?
     var movies: [Movie]?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        self.setupDarkNavigationBar()
         self.setupCollectionView()
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        self.presenter = FavoritesPresenter()
-        self.presenter?.onInit(view: self, appDelegate: appDelegate)
+        if (self.presenter == nil) {
+            self.presenter = FavoritesPresenter()
+            self.presenter?.onInit(view: self, appDelegate: appDelegate)
+        }
         
         self.presenter?.fetchFavoriteMovies()
     }
-    
     private func setupCollectionView() {
         let moviesCellNib = UINib(nibName: "MovieCell", bundle: nil)
         

@@ -34,6 +34,23 @@ class BaseService {
         task.resume()
     }
     
+    func doPOSTRequest(with url: URL, bodyString: String?, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        let session = URLSession.shared
+        var request = URLRequest(url: url)
+        
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        if let bodyString = bodyString {
+            request.httpBody = bodyString.data(using: String.Encoding.utf8)
+        }
+        
+        let task = session.dataTask(with: request, completionHandler: completionHandler)
+        
+        task.resume()
+    }
+    
     func tmdbURLFromParameters(_ parameters: [String:String], withPathExtension: String? = nil) -> URL {
         
         var components = URLComponents()

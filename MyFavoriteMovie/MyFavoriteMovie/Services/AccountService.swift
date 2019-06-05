@@ -45,4 +45,55 @@ class AccountService: BaseService {
             completionHandler(isFavorite, nil)
         }
     }
+    
+    func markAsFavorite(movieID: Int, isFavorite: Bool, sessionID: String, userID: Int, completionHandler: @escaping (Bool?, Error?) -> Void) {
+        let parameters = self.baseParameters.merge(with: [
+            Constants.TMDB.ParameterKeys.SessionID: sessionID
+            ])
+        
+        let url = tmdbURLFromParameters(parameters, withPathExtension: "/account/\(userID)/favorite")
+        let body = "{\"media_type\": \"movie\",\"media_id\": \(movieID),\"favorite\":\(isFavorite)}"
+        
+        doPOSTRequest(with: url, bodyString: body) { (data, response, error) in
+            guard error == nil else {
+                completionHandler(nil, error)
+                return
+            }
+            
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                completionHandler(nil, DefaultError(message: "There was an error with your request: \(String(describing: error))"))
+                return
+            }
+            
+            guard let data = data else {
+                completionHandler(nil, DefaultError(message: "Error in Server"))
+                return
+            }
+            
+            let parsedResult: [String:AnyObject]!
+            do {
+                parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:AnyObject]
+            } catch {
+                print("Could not parse the data as JSON: '\(data)'")
+                return
+            }
+            
+            /* GUARD: Did we receive a TMDB status_code? */
+            guard let tmdbStatusCode = parsedResult[Constants.TMDB.ResponseKeys.StatusCode] as? Int else {
+                print("Could not find key '\(Constants.TMDB.ResponseKeys.StatusCode)' in  \(String(describing: parsedResult))")
+                return
+            }
+            
+            /* GUARD: Did we receive the correct TMDB status_code? */
+            if isFavorite && !(tmdbStatusCode == 12 || tmdbStatusCode == 1) {
+                print("Unrecognized '\(Constants.TMDB.ResponseKeys.StatusCode)' in  \(String(describing: parsedResult))")
+                return
+            } else if !isFavorite && tmdbStatusCode != 13 {
+                print("Unrecognized '\(Constants.TMDB.ResponseKeys.StatusCode)' in  \(String(describing: parsedResult))")
+                return
+            }
+            
+            completionHandler(isFavorite, nil)
+        }
+    }
 }

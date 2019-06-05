@@ -23,6 +23,22 @@ class BaseTableController: UITableViewController {
         self.present(alert, animated: true)
     }
     
+    func setupTransparentLightNavigationBar() {
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.barStyle = .black
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    func setupDarkNavigationBar() {
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.barStyle = .default
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    }
+    
     func showActivityIndicator() {
         if activityIndicator != nil && activityIndicatorContainer != nil {
             hideActivityIndicator()
@@ -57,6 +73,10 @@ class BaseTableController: UITableViewController {
         
         activityIndicator = nil
         activityIndicatorContainer = nil
+    }
+    
+    @IBAction func logout() {
+        dismiss(animated: true, completion: nil)
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {

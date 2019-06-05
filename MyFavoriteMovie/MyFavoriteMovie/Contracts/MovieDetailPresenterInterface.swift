@@ -12,10 +12,12 @@ protocol MovieDetailViewInterface {
     
     func bindMovie(movie: Movie)
     func onError(message: String)
+    func updateFavoriteButton(_ isFavorite: Bool)
 }
 
 protocol MovieDetailPresenterInterface {
     
     func onInit(view: MovieDetailViewInterface, appDelegate: AppDelegate)
     func checkMovieState(movie: Movie)
+    func markAsFavorite(_ movie: Movie, _ isFavorite: Bool)
 }

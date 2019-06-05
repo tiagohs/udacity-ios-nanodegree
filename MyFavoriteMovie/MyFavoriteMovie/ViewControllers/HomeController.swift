@@ -48,6 +48,12 @@ class HomeController: BaseController {
         self.showActivityIndicator()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupDarkNavigationBar()
+    }
+    
     private func setupCollectionViews() {
         let genreCellNib = UINib(nibName: "GenreCell", bundle: nil)
         let moviesCellNib = UINib(nibName: "MovieCell", bundle: nil)

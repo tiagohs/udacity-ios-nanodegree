@@ -131,5 +131,9 @@ struct Constants {
         static let BackdropPlaceholder          = "BackdropPlaceholder"
         static let MoviePlaceholder             = "MoviePlaceholder"
         static let MovieIcon                    = "MovieIcon"
+        static let HeartFilled                    = "HeartFilled"
+        static let HeartOutline                    = "HeartOutline"
+        static let HomeIcon                    = "HomeIcon"
+        static let LogoutIcon                    = "LogoutIcon"
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5C3421423ECEA61DB6ADCED2 /* Pods_MyFavoriteMovie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1362DE492645E53157FE7F0D /* Pods_MyFavoriteMovie.framework */; };
+		A27CE97F22A81591003494B8 /* MovieDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CE97E22A81591003494B8 /* MovieDetailsCell.swift */; };
 		A2804DA022A46FB900ABF8F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2804D9F22A46FB900ABF8F1 /* AppDelegate.swift */; };
 		A2804DA222A46FB900ABF8F1 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2804DA122A46FB900ABF8F1 /* LoginController.swift */; };
 		A2804DA522A46FB900ABF8F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2804DA322A46FB900ABF8F1 /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		1362DE492645E53157FE7F0D /* Pods_MyFavoriteMovie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFavoriteMovie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2411D1E95A87AC171BA636D1 /* Pods-MyFavoriteMovie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFavoriteMovie.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFavoriteMovie/Pods-MyFavoriteMovie.release.xcconfig"; sourceTree = "<group>"; };
+		A27CE97E22A81591003494B8 /* MovieDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsCell.swift; sourceTree = "<group>"; };
 		A2804D9C22A46FB800ABF8F1 /* MyFavoriteMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFavoriteMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2804D9F22A46FB900ABF8F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2804DA122A46FB900ABF8F1 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 			children = (
 				A2804DE922A5755D00ABF8F1 /* MovieCell.swift */,
 				A2804DEB22A5756700ABF8F1 /* GenreCell.swift */,
+				A27CE97E22A81591003494B8 /* MovieDetailsCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				A2804DEC22A5756700ABF8F1 /* GenreCell.swift in Sources */,
 				A2804E0A22A6B54900ABF8F1 /* UITools.swift in Sources */,
 				A2804DE422A4988600ABF8F1 /* MovieDetailController.swift in Sources */,
+				A27CE97F22A81591003494B8 /* MovieDetailsCell.swift in Sources */,
 				A2804DE022A4986700ABF8F1 /* HomeController.swift in Sources */,
 				A2804DA022A46FB900ABF8F1 /* AppDelegate.swift in Sources */,
 				A2804DF622A597FD00ABF8F1 /* LoginContract.swift in Sources */,

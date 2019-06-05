@@ -52,5 +52,35 @@ class MovieDetailPresenter: MovieDetailPresenterInterface {
         }
     }
     
+    func markAsFavorite(_ movie: Movie, _ isFavorite: Bool) {
+        guard let movieID = movie.id else {
+            self.view?.onError(message: "Erro ao buscar informações sobre o filme, tente novamente.")
+            return
+        }
+        
+        guard let userID = appDelegate.userID else {
+            self.view?.onError(message: "Erro ao buscar informações sobre o filme, tente novamente.")
+            return
+        }
+        
+        guard let sessionID = appDelegate.sessionID else {
+            self.view?.onError(message: "Erro ao buscar informações sobre o filme, tente novamente.")
+            return
+        }
+        
+        self.accountService.markAsFavorite(movieID: movieID, isFavorite: isFavorite, sessionID: sessionID, userID: userID) { (isFavorite, error) in
+            guard error == nil else {
+                self.view?.onError(message: error?.localizedDescription ?? "Erro ao salvar como favorito, tente novamente.")
+                return
+            }
+            guard let isFavorite = isFavorite else {
+                self.view?.onError(message: "Erro ao salvar como favorito.")
+                return
+            }
+            
+            self.view?.updateFavoriteButton(isFavorite)
+        }
+    }
+    
     
 }
