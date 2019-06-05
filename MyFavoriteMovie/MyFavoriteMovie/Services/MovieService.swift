@@ -30,4 +30,15 @@ class MovieService: BaseService {
         }
     }
     
+    func searchMoviesBy(query: String, page: Int, completionHandler: @escaping ([Movie]?, Error?) -> Void) {
+        let parameters = self.baseParameters.merge(with: [
+            Constants.TMDB.ParameterKeys.Page: String(page),
+            Constants.TMDB.ParameterKeys.Query: query
+        ])
+        let url = tmdbURLFromParameters(parameters, withPathExtension: "/search/movie")
+        
+        doRequest(with: url) { (data, response, error) in
+            self.onMoviesRequestResponse(response, data, error, completionHandler)
+        }
+    }
 }

@@ -32,6 +32,7 @@ struct Constants {
             static let Password         = "password"
             static let Language         = "language"
             static let Page             = "page"
+            static let Query            = "query"
         }
         
         // MARK: TMDB Parameter Values

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Hero
 
 // MARK: HomeController
 class HomeController: BaseController {
@@ -60,6 +61,9 @@ class HomeController: BaseController {
         
         self.genresCollectionView.register(genreCellNib, forCellWithReuseIdentifier: GenresCellIdentifier)
         self.moviesCollectionView.register(moviesCellNib, forCellWithReuseIdentifier: MoviesCellIdentifier)
+        
+        self.genresCollectionView.hero.modifiers = [.cascade]
+        self.moviesCollectionView.hero.modifiers = [.cascade]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -92,9 +96,15 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         switch restorationIdentifier {
         case GenresCollectionViewIdentifier:
-            return self.bindGenresCell(collectionView, cellForItemAt: indexPath)
+            let cell = self.bindGenresCell(collectionView, cellForItemAt: indexPath)
+            cell.hero.modifiers = [.fade, .scale(0.5)]
+            
+            return cell
         case MoviesCollectionViewIdentifier:
-            return self.bindMoviesCell(collectionView, cellForItemAt: indexPath)
+            let cell = self.bindMoviesCell(collectionView, cellForItemAt: indexPath)
+            cell.hero.modifiers = [.fade, .scale(0.5)]
+            
+            return cell
         default:
             return UICollectionViewCell()
         }
@@ -155,6 +165,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         
     }
+    
 }
 
 // MARK: HomeViewInterface

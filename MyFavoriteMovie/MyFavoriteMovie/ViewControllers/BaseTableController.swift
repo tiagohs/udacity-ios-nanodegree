@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Hero
 
 class BaseTableController: UITableViewController {
     
@@ -76,7 +77,8 @@ class BaseTableController: UITableViewController {
     }
     
     @IBAction func logout() {
-        dismiss(animated: true, completion: nil)
+        hero.dismissViewController()
+        //dismiss(animated: true, completion: nil)
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
