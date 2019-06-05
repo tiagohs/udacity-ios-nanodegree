@@ -61,6 +61,8 @@ extension LoginController: UITextFieldDelegate {
 extension LoginController: LoginViewInterface {
     
     func onLoginComplete() {
+        self.hideActivityIndicator()
+        
         let controller = self.storyboard!.instantiateViewController(withIdentifier: "MoviesTabBarController") as! UITabBarController
         self.present(controller, animated: true, completion: nil)
     }
