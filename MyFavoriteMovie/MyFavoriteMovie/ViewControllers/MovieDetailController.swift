@@ -38,9 +38,15 @@ class MovieDetailController: BaseController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        setupTransparentLightNavigationBar()
         
-        setupTransparentLightNavigationBar() 
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.setupDarkNavigationBar()
+        
+        super.viewWillDisappear(animated)
     }
     
     @IBAction func addToWatchlistClicked(_ sender: Any) {

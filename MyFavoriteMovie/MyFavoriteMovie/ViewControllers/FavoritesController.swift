@@ -25,9 +25,8 @@ class FavoritesController: BaseController {
     var movies: [Movie]?
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        self.setupDarkNavigationBar()
+        //self.setupDarkNavigationBar()
         self.setupCollectionView()
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -38,6 +37,8 @@ class FavoritesController: BaseController {
         }
         
         self.presenter?.fetchFavoriteMovies()
+        
+        super.viewWillAppear(animated)
     }
     private func setupCollectionView() {
         let moviesCellNib = UINib(nibName: "MovieCell", bundle: nil)

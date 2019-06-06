@@ -39,8 +39,6 @@ class HomeController: BaseController {
     var presenter: HomePresenterInterface!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
         self.setupCollectionViews()
         
         self.presenter = HomePresenter()
@@ -48,12 +46,8 @@ class HomeController: BaseController {
         self.presenter.fetchGenres()
         
         self.showActivityIndicator()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        self.setupDarkNavigationBar()
+        super.viewDidLoad()
     }
     
     private func setupCollectionViews() {

@@ -24,9 +24,6 @@ class WatchlistController: BaseController {
     var movies: [Movie]?
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.setupDarkNavigationBar()
         self.setupCollectionView()
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -37,6 +34,8 @@ class WatchlistController: BaseController {
         }
         
         self.presenter?.fetchWatchlist()
+        
+        super.viewWillAppear(animated)
     }
     
     private func setupCollectionView() {
