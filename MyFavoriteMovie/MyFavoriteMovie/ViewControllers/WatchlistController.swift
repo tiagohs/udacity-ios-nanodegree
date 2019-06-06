@@ -1,27 +1,26 @@
 //
-//  FavoritesController.swift
+//  WatchlistController.swift
 //  MyFavoriteMovie
 //
-//  Created by Tiago Silva on 02/06/2019.
+//  Created by Tiago Silva on 06/06/2019.
 //  Copyright © 2019 Tiago Silva. All rights reserved.
 //
 
 import UIKit
 import Hero
 
-class FavoritesController: BaseController {
-    
-    let MovieFavoriteSegueIdentifier = "MovieFavoriteSegueIdentifier"
+class WatchlistController: BaseController {
+    let MoviesSegueIdentifier = "MoviesSegueIdentifier"
     let MoviesCellIdentifier = "MoviesCellIdentifier"
     
-    @IBOutlet weak var favoriteMoviesCollectionView: UICollectionView!
-    @IBOutlet weak var favoriteMoviesCollectionViewFlowLayout: UICollectionViewFlowLayout! {
+    @IBOutlet weak var moviesCollectionView: UICollectionView!
+    @IBOutlet weak var moviesCollectionViewFlowLayout: UICollectionViewFlowLayout! {
         didSet {
-            favoriteMoviesCollectionViewFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+            moviesCollectionViewFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         }
     }
     
-    var presenter: FavoritesPresenterInterface?
+    var presenter: WatchlistPresenterInterface?
     var movies: [Movie]?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,17 +32,18 @@ class FavoritesController: BaseController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         if (self.presenter == nil) {
-            self.presenter = FavoritesPresenter()
+            self.presenter = WatchlistPresenter()
             self.presenter?.onInit(view: self, appDelegate: appDelegate)
         }
         
-        self.presenter?.fetchFavoriteMovies()
+        self.presenter?.fetchWatchlist()
     }
+    
     private func setupCollectionView() {
         let moviesCellNib = UINib(nibName: "MovieCell", bundle: nil)
         
-        self.favoriteMoviesCollectionView.register(moviesCellNib, forCellWithReuseIdentifier: MoviesCellIdentifier)
-        self.favoriteMoviesCollectionView.hero.modifiers = [.cascade]
+        self.moviesCollectionView.register(moviesCellNib, forCellWithReuseIdentifier: MoviesCellIdentifier)
+        self.moviesCollectionView.hero.modifiers = [.cascade]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,7 +53,7 @@ class FavoritesController: BaseController {
     }
 }
 
-extension FavoritesController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension WatchlistController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movies?.count ?? 0
@@ -85,13 +85,13 @@ extension FavoritesController: UICollectionViewDelegate, UICollectionViewDataSou
     }
 }
 
-extension FavoritesController: FavoritesViewInterface {
+extension WatchlistController: WatchlistViewInterface {
     
     func bindMovies(movies: [Movie]) {
         self.movies = movies
         
         performUIUpdatesOnMain {
-            self.favoriteMoviesCollectionView.reloadData()
+            self.moviesCollectionView.reloadData()
         }
         
     }

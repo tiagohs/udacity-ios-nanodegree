@@ -46,13 +46,14 @@ class HomeController: BaseController {
         self.presenter = HomePresenter()
         self.presenter.onInit(view: self)
         self.presenter.fetchGenres()
+        
         self.showActivityIndicator()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setupDarkNavigationBar()
+        self.setupDarkNavigationBar()
     }
     
     private func setupCollectionViews() {
@@ -64,12 +65,6 @@ class HomeController: BaseController {
         
         self.genresCollectionView.hero.modifiers = [.cascade]
         self.moviesCollectionView.hero.modifiers = [.cascade]
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let movie = sender as? Movie, let destination = segue.destination as? MovieDetailController {
-            destination.movie = movie
-        }
     }
     
 }
@@ -139,31 +134,45 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         switch restorationIdentifier {
         case GenresCollectionViewIdentifier:
-            if let genres = self.genres {
-                let selectedGenre = genres[indexPath.row]
-                
-                let newGenres = genres.map({ (genre) -> Genre in
-                    genre.isSelected = selectedGenre.id == genre.id
-                    
-                    return genre
-                })
-                
-                self.genres = newGenres
-                self.genresCollectionView.reloadData()
-                
-                self.presenter.fetchMoviesByGenre(genre: selectedGenre)
-                self.showActivityIndicator()
-            }
+            onGenreSelect(indexPath)
+            return
         case MoviesCollectionViewIdentifier:
-            if let movies = self.movies {
-                let movie = movies[indexPath.row]
-                
-                performSegue(withIdentifier: MovieHomeSegueIdentifier, sender: movie)
-            }
+            onMovieSelect(indexPath)
+            return
         default:
             return
         }
-        
+    }
+    
+    private func onGenreSelect(_ indexPath: IndexPath) {
+        if let genres = self.genres {
+            let selectedGenre = genres[indexPath.row]
+            
+            let newGenres = genres.map({ (genre) -> Genre in
+                genre.isSelected = selectedGenre.id == genre.id
+                
+                return genre
+            })
+            
+            self.genres = newGenres
+            self.genresCollectionView.reloadData()
+            
+            self.presenter.fetchMoviesByGenre(genre: selectedGenre)
+            self.showActivityIndicator()
+        }
+    }
+    
+    private func onMovieSelect(_ indexPath: IndexPath) {
+        if let movies = self.movies {
+            let movie = movies[indexPath.row]
+            
+            if let controller = self.storyboard!.instantiateViewController(withIdentifier: "MovieDetailsIdentifier") as? MovieDetailController {
+                controller.hero.modalAnimationType = .slide(direction: .left)
+                controller.movie = movie
+                
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+        }
     }
     
 }

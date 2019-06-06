@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5C3421423ECEA61DB6ADCED2 /* Pods_MyFavoriteMovie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1362DE492645E53157FE7F0D /* Pods_MyFavoriteMovie.framework */; };
 		A27CE97F22A81591003494B8 /* MovieDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CE97E22A81591003494B8 /* MovieDetailsCell.swift */; };
+		A27CE98122A99615003494B8 /* WatchlistController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CE98022A99615003494B8 /* WatchlistController.swift */; };
+		A27CE98322A99A38003494B8 /* WatchlistContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CE98222A99A38003494B8 /* WatchlistContract.swift */; };
+		A27CE98522A99A5E003494B8 /* WatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CE98422A99A5E003494B8 /* WatchlistPresenter.swift */; };
 		A2804DA022A46FB900ABF8F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2804D9F22A46FB900ABF8F1 /* AppDelegate.swift */; };
 		A2804DA222A46FB900ABF8F1 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2804DA122A46FB900ABF8F1 /* LoginController.swift */; };
 		A2804DA522A46FB900ABF8F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2804DA322A46FB900ABF8F1 /* Main.storyboard */; };
@@ -55,6 +58,9 @@
 		1362DE492645E53157FE7F0D /* Pods_MyFavoriteMovie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFavoriteMovie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2411D1E95A87AC171BA636D1 /* Pods-MyFavoriteMovie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFavoriteMovie.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFavoriteMovie/Pods-MyFavoriteMovie.release.xcconfig"; sourceTree = "<group>"; };
 		A27CE97E22A81591003494B8 /* MovieDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsCell.swift; sourceTree = "<group>"; };
+		A27CE98022A99615003494B8 /* WatchlistController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistController.swift; sourceTree = "<group>"; };
+		A27CE98222A99A38003494B8 /* WatchlistContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistContract.swift; sourceTree = "<group>"; };
+		A27CE98422A99A5E003494B8 /* WatchlistPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistPresenter.swift; sourceTree = "<group>"; };
 		A2804D9C22A46FB800ABF8F1 /* MyFavoriteMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFavoriteMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2804D9F22A46FB900ABF8F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2804DA122A46FB900ABF8F1 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -189,6 +195,7 @@
 				A2804E0122A5B29F00ABF8F1 /* LoginPresenter.swift */,
 				A2804E0322A5B2C100ABF8F1 /* FavoritesPresenter.swift */,
 				A2804E1322A7305600ABF8F1 /* MovieDetailPresenter.swift */,
+				A27CE98422A99A5E003494B8 /* WatchlistPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -221,6 +228,7 @@
 				A2804DF522A597FD00ABF8F1 /* LoginContract.swift */,
 				A2804DF722A5980E00ABF8F1 /* FavoriteContract.swift */,
 				A2804E1122A72FAC00ABF8F1 /* MovieDetailPresenterInterface.swift */,
+				A27CE98222A99A38003494B8 /* WatchlistContract.swift */,
 			);
 			path = Contracts;
 			sourceTree = "<group>";
@@ -255,6 +263,7 @@
 				A2804DE122A4987A00ABF8F1 /* FavoritesController.swift */,
 				A2804DE322A4988600ABF8F1 /* MovieDetailController.swift */,
 				A2804DF922A59B9A00ABF8F1 /* BaseTableController.swift */,
+				A27CE98022A99615003494B8 /* WatchlistController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -479,9 +488,12 @@
 				A2804DFA22A59B9A00ABF8F1 /* BaseTableController.swift in Sources */,
 				A2804DE222A4987A00ABF8F1 /* FavoritesController.swift in Sources */,
 				A2804DCA22A471E900ABF8F1 /* Constants.swift in Sources */,
+				A27CE98322A99A38003494B8 /* WatchlistContract.swift in Sources */,
+				A27CE98122A99615003494B8 /* WatchlistController.swift in Sources */,
 				A2804DF222A58B9700ABF8F1 /* TMDBUtils.swift in Sources */,
 				A2804E0622A5D0A700ABF8F1 /* AuthService.swift in Sources */,
 				A2804E0022A5B28600ABF8F1 /* HomePresenter.swift in Sources */,
+				A27CE98522A99A5E003494B8 /* WatchlistPresenter.swift in Sources */,
 				A2804E1222A72FAC00ABF8F1 /* MovieDetailPresenterInterface.swift in Sources */,
 				A2804E1022A72DC800ABF8F1 /* AccountService.swift in Sources */,
 				A2804DD022A4739800ABF8F1 /* DateFormatTransform.swift in Sources */,

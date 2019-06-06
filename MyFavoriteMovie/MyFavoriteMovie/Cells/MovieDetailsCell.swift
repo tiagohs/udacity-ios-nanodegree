@@ -25,6 +25,7 @@ class MovieDetailsCell: UITableViewCell {
     }
     
     func bindMovie(_ movie: Movie) {
+        self.posterImage.hero.id = String(describing: movie.id)
         setupFavoriteButton(movie.isFavorite)
         
         titleLabel.text = movie.title

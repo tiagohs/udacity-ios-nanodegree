@@ -50,6 +50,19 @@ class MovieDetailPresenter: MovieDetailPresenterInterface {
             
             self.view.bindMovie(movie: movie)
         }
+        
+        self.accountService.wasAddedToWatchlist(movieID: movieID, sessionID: sessionID, userID: userID) { (wasAddedToWatchlist, error) in
+            guard error == nil else {
+                self.view?.onError(message: error?.localizedDescription ?? "Erro ao buscar informações sobre o filme, tente novamente.")
+                return
+            }
+            guard let wasAddedToWatchlist = wasAddedToWatchlist else {
+                self.view?.onError(message: "Erro ao buscar informações sobre o filme, tente novamente.")
+                return
+            }
+            
+            self.view.updateAddToWatchlistButton(wasAddedToWatchlist)
+        }
     }
     
     func markAsFavorite(_ movie: Movie, _ isFavorite: Bool) {
@@ -82,5 +95,34 @@ class MovieDetailPresenter: MovieDetailPresenterInterface {
         }
     }
     
+    func addToWatchlist(_ movie: Movie, _ addToWatchlist: Bool) {
+        guard let movieID = movie.id else {
+            self.view?.onError(message: "Erro ao buscar informações sobre o filme, tente novamente.")
+            return
+        }
+        
+        guard let userID = appDelegate.userID else {
+            self.view?.onError(message: "Erro ao buscar informações sobre o filme, tente novamente.")
+            return
+        }
+        
+        guard let sessionID = appDelegate.sessionID else {
+            self.view?.onError(message: "Erro ao buscar informações sobre o filme, tente novamente.")
+            return
+        }
+        
+        self.accountService.addMovieToWatchlist(movieID: movieID, shouldAddToWatchlist: addToWatchlist, sessionID: sessionID, userID: userID) { (wasAddedToWatchlist, error) in
+            guard error == nil else {
+                self.view?.onError(message: error?.localizedDescription ?? "Erro ao salvar na sua Watchlist, tente novamente.")
+                return
+            }
+            guard let wasAddedToWatchlist = wasAddedToWatchlist else {
+                self.view?.onError(message: "Erro ao salvar na sua Watchlist.")
+                return
+            }
+            
+            self.view?.updateAddToWatchlistButton(wasAddedToWatchlist)
+        }
+    }
     
 }

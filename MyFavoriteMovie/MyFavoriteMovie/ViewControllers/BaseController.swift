@@ -32,13 +32,15 @@ class BaseController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
     }
     
     func setupDarkNavigationBar() {
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.barStyle = .default
         self.navigationController?.navigationBar.tintColor = UIColor.black
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        self.navigationController?.navigationBar.backgroundColor = UIColor.white
     }
     
     func showActivityIndicator() {

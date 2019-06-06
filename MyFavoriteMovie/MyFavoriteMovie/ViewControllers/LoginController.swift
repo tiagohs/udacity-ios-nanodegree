@@ -66,8 +66,6 @@ extension LoginController: LoginViewInterface {
             controller.hero.modalAnimationType = .slide(direction: .left)
             self.hero.replaceViewController(with: controller)
             
-            //self.present(controller, animated: true, completion: nil)
-            
             self.setUIEnabled(true)
             self.hideActivityIndicator()
         }

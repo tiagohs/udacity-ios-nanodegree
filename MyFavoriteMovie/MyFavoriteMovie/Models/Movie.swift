@@ -24,6 +24,7 @@ class Movie {
     var overview : String?
     var releaseDate : String?
     var isFavorite: Bool = false
+    var addedToWatchlist: Bool = false
     
     init(dictionary: [String:AnyObject]) {
         id = dictionary[Constants.TMDB.ResponseKeys.Movie.Id] as? Int

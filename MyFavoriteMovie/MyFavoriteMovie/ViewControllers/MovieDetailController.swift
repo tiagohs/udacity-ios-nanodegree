@@ -8,9 +8,12 @@
 
 import UIKit
 
-class MovieDetailController: BaseTableController {
+class MovieDetailController: BaseController {
     
     let MovieDetailsCellIdentifier = "MovieDetailsCellIdentifier"
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addToWatchlistButton: UIButton!
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
@@ -40,15 +43,24 @@ class MovieDetailController: BaseTableController {
         setupTransparentLightNavigationBar() 
     }
     
+    @IBAction func addToWatchlistClicked(_ sender: Any) {
+        
+        if let movie = self.movie {
+            let addToWatchlist = !movie.addedToWatchlist
+            
+            self.presenter.addToWatchlist(movie, addToWatchlist)
+        }
+        
+    }
 }
 
-extension MovieDetailController {
+extension MovieDetailController: UITableViewDelegate, UITableViewDataSource {
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let movie = self.movie, let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsCellIdentifier, for: indexPath) as? MovieDetailsCell {
             cell.genres = self.genres
@@ -60,6 +72,7 @@ extension MovieDetailController {
         
         return UITableViewCell()
     }
+    
 }
 
 extension MovieDetailController: OnMovieCellListener {
@@ -91,6 +104,23 @@ extension MovieDetailController: MovieDetailViewInterface {
         performUIUpdatesOnMain {
             self.hideActivityIndicator()
             self.tableView.reloadData()
+        }
+    }
+    
+    func updateAddToWatchlistButton(_ addedToWatchlist: Bool) {
+        
+        performUIUpdatesOnMain {
+            if self.addToWatchlistButton.isHidden { self.addToWatchlistButton.isHidden = false }
+            
+            if (addedToWatchlist) {
+                self.addToWatchlistButton.setTitle("Remove from Watchlist", for: .normal)
+                self.addToWatchlistButton.setTitleColor(ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary), for: .normal)
+                self.addToWatchlistButton.backgroundColor = UIColor.white
+            } else {
+                self.addToWatchlistButton.setTitle("Add to Watchlist", for: .normal)
+                self.addToWatchlistButton.setTitleColor(UIColor.white, for: .normal)
+                self.addToWatchlistButton.backgroundColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
+            }
         }
     }
 }

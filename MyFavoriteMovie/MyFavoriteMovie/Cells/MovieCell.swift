@@ -34,6 +34,8 @@ class MovieCell: UICollectionViewCell {
     }
     
     private func bindMovie(_ movie: Movie) {
+        self.posterImage.hero.id = String(describing: movie.id)
+        
         titleLabel.text = movie.title
         yearLabel.text = ViewUtils.dateFrom(string: movie.releaseDate)?.year
         genresLabel.text = TMDBUtils.formatGenresToStringFrom(arrayOfGenresID: movie.genreIds, genres: self.genres)

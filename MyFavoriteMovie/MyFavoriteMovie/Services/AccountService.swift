@@ -23,7 +23,7 @@ class AccountService: BaseService {
         }
     }
     
-    func fetchUserWacthlis(sessionID: String, userID: Int, page: Int, completionHandler: @escaping ([Movie]?, Error?) -> Void) {
+    func fetchUserWatchlist(sessionID: String, userID: Int, page: Int, completionHandler: @escaping ([Movie]?, Error?) -> Void) {
         let parameters = self.baseParameters.merge(with: [
             Constants.TMDB.ParameterKeys.Page: String(page),
             Constants.TMDB.ParameterKeys.SessionID: sessionID
@@ -68,12 +68,20 @@ class AccountService: BaseService {
                 return
             }
             
-            /* GUARD: Did we receive a TMDB status_code? */
             guard let tmdbStatusCode = parsedResult[Constants.TMDB.ResponseKeys.StatusCode] as? Int else {
                 completionHandler(nil, DefaultError(message: "Could not find key '\(Constants.TMDB.ResponseKeys.StatusCode)' in  \(String(describing: parsedResult))"))
                 return
             }
             
+            if shouldAddToWatchlist && !(tmdbStatusCode == 12 || tmdbStatusCode == 1) {
+                completionHandler(nil, DefaultError(message: "Unrecognized '\(Constants.TMDB.ResponseKeys.StatusCode)' in  \(String(describing: parsedResult))"))
+                return
+            } else if !shouldAddToWatchlist && tmdbStatusCode != 13 {
+                completionHandler(nil, DefaultError(message: "Unrecognized '\(Constants.TMDB.ResponseKeys.StatusCode)' in  \(String(describing: parsedResult))"))
+                return
+            }
+            
+            completionHandler(shouldAddToWatchlist, nil)
         }
     }
     
@@ -97,6 +105,29 @@ class AccountService: BaseService {
             }
             
             completionHandler(isFavorite, nil)
+        }
+    }
+    
+    func wasAddedToWatchlist(movieID: Int, sessionID: String, userID: Int, completionHandler: @escaping (Bool?, Error?) -> Void) {
+        var wasAddedToWatchlist = false
+        
+        fetchUserWatchlist(sessionID: sessionID, userID: userID, page: 1) { (movies, error) in
+            guard error == nil else {
+                completionHandler(nil, error)
+                return
+            }
+            guard let moviesAddedToWatchlist = movies else {
+                completionHandler(nil, DefaultError(message: "Erro ao buscar os filmes, tente novamente."))
+                return
+            }
+            
+            for movie in moviesAddedToWatchlist {
+                if movieID == movie.id {
+                    wasAddedToWatchlist = true
+                }
+            }
+            
+            completionHandler(wasAddedToWatchlist, nil)
         }
     }
     
@@ -137,7 +168,6 @@ class AccountService: BaseService {
                 return
             }
             
-            /* GUARD: Did we receive the correct TMDB status_code? */
             if isFavorite && !(tmdbStatusCode == 12 || tmdbStatusCode == 1) {
                 completionHandler(nil, DefaultError(message: "Unrecognized '\(Constants.TMDB.ResponseKeys.StatusCode)' in  \(String(describing: parsedResult))"))
                 return
