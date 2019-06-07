@@ -26,6 +26,26 @@ class LoginPresenter: LoginPresenterInterface {
         }
     }
     
+    func loginWithAuth() {
+        self.requestToken() { (token) in
+            
+            self.appDelegate.requestToken = token
+            
+            if let authorizationURL = URL(string: "\(Constants.TMDB.AuthorizationURL)\(token)") {
+                let request = URLRequest(url: authorizationURL)
+                
+                self.view.onLoginAuthConfigurationComplete(requestToken: token, request: request, { (success, error) in
+                    
+                    if success {
+                        self.getSessionID(token)
+                    }
+                })
+            }
+            
+            
+        }
+    }
+    
     private func requestToken(_ completionHandler: @escaping (String) -> Void) {
         self.authService.createToken { (requestToken, error) in
             guard error == nil else {

@@ -12,6 +12,7 @@
 		A27CE98122A99615003494B8 /* WatchlistController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CE98022A99615003494B8 /* WatchlistController.swift */; };
 		A27CE98322A99A38003494B8 /* WatchlistContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CE98222A99A38003494B8 /* WatchlistContract.swift */; };
 		A27CE98522A99A5E003494B8 /* WatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CE98422A99A5E003494B8 /* WatchlistPresenter.swift */; };
+		A27CE98722AAFCBF003494B8 /* TMDBAuthWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CE98622AAFCBF003494B8 /* TMDBAuthWebViewController.swift */; };
 		A2804DA022A46FB900ABF8F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2804D9F22A46FB900ABF8F1 /* AppDelegate.swift */; };
 		A2804DA222A46FB900ABF8F1 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2804DA122A46FB900ABF8F1 /* LoginController.swift */; };
 		A2804DA522A46FB900ABF8F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2804DA322A46FB900ABF8F1 /* Main.storyboard */; };
@@ -61,6 +62,7 @@
 		A27CE98022A99615003494B8 /* WatchlistController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistController.swift; sourceTree = "<group>"; };
 		A27CE98222A99A38003494B8 /* WatchlistContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistContract.swift; sourceTree = "<group>"; };
 		A27CE98422A99A5E003494B8 /* WatchlistPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistPresenter.swift; sourceTree = "<group>"; };
+		A27CE98622AAFCBF003494B8 /* TMDBAuthWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAuthWebViewController.swift; sourceTree = "<group>"; };
 		A2804D9C22A46FB800ABF8F1 /* MyFavoriteMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFavoriteMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2804D9F22A46FB900ABF8F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2804DA122A46FB900ABF8F1 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -224,8 +226,8 @@
 		A2804DB522A4703800ABF8F1 /* Contracts */ = {
 			isa = PBXGroup;
 			children = (
-				A2804DF322A597E900ABF8F1 /* HomeContract.swift */,
 				A2804DF522A597FD00ABF8F1 /* LoginContract.swift */,
+				A2804DF322A597E900ABF8F1 /* HomeContract.swift */,
 				A2804DF722A5980E00ABF8F1 /* FavoriteContract.swift */,
 				A2804E1122A72FAC00ABF8F1 /* MovieDetailPresenterInterface.swift */,
 				A27CE98222A99A38003494B8 /* WatchlistContract.swift */,
@@ -264,6 +266,7 @@
 				A2804DE322A4988600ABF8F1 /* MovieDetailController.swift */,
 				A2804DF922A59B9A00ABF8F1 /* BaseTableController.swift */,
 				A27CE98022A99615003494B8 /* WatchlistController.swift */,
+				A27CE98622AAFCBF003494B8 /* TMDBAuthWebViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				A2804DC322A470F500ABF8F1 /* UIImageViewExtensions.swift in Sources */,
 				A2804DEA22A5755D00ABF8F1 /* MovieCell.swift in Sources */,
 				A2804DCE22A4737900ABF8F1 /* Date.swift in Sources */,
+				A27CE98722AAFCBF003494B8 /* TMDBAuthWebViewController.swift in Sources */,
 				A2804E0422A5B2C100ABF8F1 /* FavoritesPresenter.swift in Sources */,
 				A2804DBC22A470B700ABF8F1 /* ViewUtils.swift in Sources */,
 				A2804DFA22A59B9A00ABF8F1 /* BaseTableController.swift in Sources */,

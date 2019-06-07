@@ -8,14 +8,30 @@
 
 import UIKit
 
+// MARK: BaseController
+
 class BaseController: UIViewController {
     
     var activityIndicatorContainer: UIView!
     var activityIndicator: UIActivityIndicatorView!
     
     var keyboardOnScreen = false
+}
+
+// MARK: BaseController [Actions]
+
+extension BaseController {
     
-    public func onError(message: String) {
+    @IBAction func logout() {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: BaseController [Utils Methods]
+
+extension BaseController {
+    
+    func onError(message: String) {
         let alert = UIAlertController(title: "Erro", message: message, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alert) in
@@ -24,23 +40,13 @@ class BaseController: UIViewController {
         
         self.present(alert, animated: true)
     }
-
-    func setupTransparentLightNavigationBar() {
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.barStyle = .black
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
-    }
     
-    func setupDarkNavigationBar() {
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.barStyle = .default
-        self.navigationController?.navigationBar.tintColor = UIColor.black
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        self.navigationController?.navigationBar.backgroundColor = UIColor.white
+    func hideActivityIndicator() {
+        activityIndicator?.stopAnimating()
+        activityIndicatorContainer?.removeFromSuperview()
+        
+        activityIndicator = nil
+        activityIndicatorContainer = nil
     }
     
     func showActivityIndicator() {
@@ -71,18 +77,36 @@ class BaseController: UIViewController {
         activityIndicator.startAnimating()
     }
     
-    @IBAction func logout() {
-        dismiss(animated: true, completion: nil)
+}
+
+// MARK: BaseController [Setup's NavigationBar]
+
+extension BaseController {
+    
+    func setupTransparentLightNavigationBar() {
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.barStyle = .black
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
     }
     
-    func hideActivityIndicator() {
-        activityIndicator?.stopAnimating()
-        activityIndicatorContainer?.removeFromSuperview()
-        
-        activityIndicator = nil
-        activityIndicatorContainer = nil
+    func setupDarkNavigationBar() {
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.barStyle = .default
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        self.navigationController?.navigationBar.backgroundColor = UIColor.white
     }
     
+}
+
+// MARK: BaseController [Keyboard States]
+
+extension BaseController {
+
     @objc func keyboardWillShow(_ notification: Notification) {
         if !keyboardOnScreen {
             view.frame.origin.y -= keyboardHeight(notification)
@@ -109,6 +133,13 @@ class BaseController: UIViewController {
         return keyboardSize.cgRectValue.height
     }
     
+}
+
+
+// MARK: BaseController [Notifications]
+
+extension BaseController {
+    
     func subscribeToNotification(_ notification: NSNotification.Name, selector: Selector) {
         NotificationCenter.default.addObserver(self, selector: selector, name: notification, object: nil)
     }
@@ -116,5 +147,4 @@ class BaseController: UIViewController {
     func unsubscribeFromAllNotifications() {
         NotificationCenter.default.removeObserver(self)
     }
-    
 }

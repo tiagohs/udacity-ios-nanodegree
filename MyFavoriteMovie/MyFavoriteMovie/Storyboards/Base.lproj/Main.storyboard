@@ -154,6 +154,9 @@
                                         <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginWithTMDBOAuthClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J3E-Cg-zdD"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GdA-Hr-QhR">
                                 <rect key="frame" x="180.5" y="461" width="14.5" height="15"/>
@@ -216,36 +219,59 @@
             </objects>
             <point key="canvasLocation" x="174" y="206"/>
         </scene>
-        <!--View Controller-->
+        <!--Auth Web View Controller-->
         <scene sceneID="Fhq-fl-xN2">
             <objects>
-                <viewController id="epq-fA-4jG" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TMDBAuthWebViewControllerIdentifier" id="epq-fA-4jG" customClass="TMDBAuthWebViewController" customModule="MyFavoriteMovie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="COX-ZD-37N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gAG-ka-pa8">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lgE-E4-DNE">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem title="TheMovieDB Auth" id="qj8-yv-OLQ">
+                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="ZN2-2R-4y3">
+                                            <color key="tintColor" red="0.4039215686" green="0.2274509804" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="cancelClicked:" destination="epq-fA-4jG" id="qZO-gQ-aPf"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="gAG-ka-pa8" firstAttribute="bottom" secondItem="R51-93-kHl" secondAttribute="bottom" id="T4s-7f-aPF"/>
-                            <constraint firstItem="gAG-ka-pa8" firstAttribute="top" secondItem="COX-ZD-37N" secondAttribute="top" id="kfZ-Hn-b1n"/>
-                            <constraint firstItem="gAG-ka-pa8" firstAttribute="leading" secondItem="R51-93-kHl" secondAttribute="leading" id="lNL-UY-sSS"/>
-                            <constraint firstItem="gAG-ka-pa8" firstAttribute="trailing" secondItem="R51-93-kHl" secondAttribute="trailing" id="ypp-GN-Eik"/>
+                            <constraint firstItem="lgE-E4-DNE" firstAttribute="leading" secondItem="R51-93-kHl" secondAttribute="leading" id="3ej-Zm-Jxv"/>
+                            <constraint firstItem="gAG-ka-pa8" firstAttribute="trailing" secondItem="R51-93-kHl" secondAttribute="trailing" id="Bq7-Zp-E5q"/>
+                            <constraint firstItem="lgE-E4-DNE" firstAttribute="trailing" secondItem="R51-93-kHl" secondAttribute="trailing" id="GW2-K4-787"/>
+                            <constraint firstItem="gAG-ka-pa8" firstAttribute="top" secondItem="lgE-E4-DNE" secondAttribute="bottom" id="RVy-dP-SkL"/>
+                            <constraint firstItem="gAG-ka-pa8" firstAttribute="bottom" secondItem="R51-93-kHl" secondAttribute="bottom" id="aUr-zY-d7I"/>
+                            <constraint firstItem="lgE-E4-DNE" firstAttribute="top" secondItem="R51-93-kHl" secondAttribute="top" id="hdR-FJ-n0A"/>
+                            <constraint firstItem="gAG-ka-pa8" firstAttribute="leading" secondItem="R51-93-kHl" secondAttribute="leading" id="yVg-t3-A6a"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R51-93-kHl"/>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="webView" destination="gAG-ka-pa8" id="UcO-xD-jrs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JMV-FK-oLy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="909.89505247376314"/>
+            <point key="canvasLocation" x="173.59999999999999" y="906.29685157421295"/>
         </scene>
         <!--Watchlist-->
         <scene sceneID="UGk-Ld-7K4">

@@ -12,6 +12,12 @@ struct Constants {
     
     static let POPULAR_ITEM_ID = 0
     
+    struct View {
+        static let MovieCell = "MovieCell"
+        static let GenreCell = "GenreCell"
+        static let MovieDetailsCell = "MovieDetailsCell"
+    }
+    
     // MARK: TMDB
     struct TMDB {
         static let ApiKey               = "dac4d50f24dee29513738d8fa3470a3f"
@@ -22,6 +28,8 @@ struct Constants {
         
         static let SignUpURL            = "https://www.themoviedb.org/account/signup"
         static let ForgotPasswordURL    = "https://www.themoviedb.org/account/reset-password"
+        static let AccountURL           = "https://www.themoviedb.org/account/"
+        static let AuthorizationURL     = "https://www.themoviedb.org/authenticate/"
         
         // MARK: TMDB Parameter Keys
         struct ParameterKeys {
