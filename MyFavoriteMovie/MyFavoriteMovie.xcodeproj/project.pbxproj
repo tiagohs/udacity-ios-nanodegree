@@ -13,6 +13,9 @@
 		A27CE98322A99A38003494B8 /* WatchlistContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CE98222A99A38003494B8 /* WatchlistContract.swift */; };
 		A27CE98522A99A5E003494B8 /* WatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CE98422A99A5E003494B8 /* WatchlistPresenter.swift */; };
 		A27CE98722AAFCBF003494B8 /* TMDBAuthWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CE98622AAFCBF003494B8 /* TMDBAuthWebViewController.swift */; };
+		A27CE9DC22AEBC0F003494B8 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CE9DB22AEBC0F003494B8 /* SearchController.swift */; };
+		A27CE9DE22AEBC36003494B8 /* SearchContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CE9DD22AEBC36003494B8 /* SearchContract.swift */; };
+		A27CE9E022AEBD47003494B8 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CE9DF22AEBD47003494B8 /* SearchPresenter.swift */; };
 		A2804DA022A46FB900ABF8F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2804D9F22A46FB900ABF8F1 /* AppDelegate.swift */; };
 		A2804DA222A46FB900ABF8F1 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2804DA122A46FB900ABF8F1 /* LoginController.swift */; };
 		A2804DA522A46FB900ABF8F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2804DA322A46FB900ABF8F1 /* Main.storyboard */; };
@@ -63,6 +66,9 @@
 		A27CE98222A99A38003494B8 /* WatchlistContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistContract.swift; sourceTree = "<group>"; };
 		A27CE98422A99A5E003494B8 /* WatchlistPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistPresenter.swift; sourceTree = "<group>"; };
 		A27CE98622AAFCBF003494B8 /* TMDBAuthWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAuthWebViewController.swift; sourceTree = "<group>"; };
+		A27CE9DB22AEBC0F003494B8 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		A27CE9DD22AEBC36003494B8 /* SearchContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContract.swift; sourceTree = "<group>"; };
+		A27CE9DF22AEBD47003494B8 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		A2804D9C22A46FB800ABF8F1 /* MyFavoriteMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFavoriteMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2804D9F22A46FB900ABF8F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2804DA122A46FB900ABF8F1 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -198,6 +204,7 @@
 				A2804E0322A5B2C100ABF8F1 /* FavoritesPresenter.swift */,
 				A2804E1322A7305600ABF8F1 /* MovieDetailPresenter.swift */,
 				A27CE98422A99A5E003494B8 /* WatchlistPresenter.swift */,
+				A27CE9DF22AEBD47003494B8 /* SearchPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -231,6 +238,7 @@
 				A2804DF722A5980E00ABF8F1 /* FavoriteContract.swift */,
 				A2804E1122A72FAC00ABF8F1 /* MovieDetailPresenterInterface.swift */,
 				A27CE98222A99A38003494B8 /* WatchlistContract.swift */,
+				A27CE9DD22AEBC36003494B8 /* SearchContract.swift */,
 			);
 			path = Contracts;
 			sourceTree = "<group>";
@@ -267,6 +275,7 @@
 				A2804DF922A59B9A00ABF8F1 /* BaseTableController.swift */,
 				A27CE98022A99615003494B8 /* WatchlistController.swift */,
 				A27CE98622AAFCBF003494B8 /* TMDBAuthWebViewController.swift */,
+				A27CE9DB22AEBC0F003494B8 /* SearchController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -469,6 +478,7 @@
 				A2804DF822A5980E00ABF8F1 /* FavoriteContract.swift in Sources */,
 				A2804DF422A597E900ABF8F1 /* HomeContract.swift in Sources */,
 				A2804DBF22A470D600ABF8F1 /* DefaultErrors.swift in Sources */,
+				A27CE9DE22AEBC36003494B8 /* SearchContract.swift in Sources */,
 				A2804DCC22A472D400ABF8F1 /* ImageUtils.swift in Sources */,
 				A2804DC522A4718D00ABF8F1 /* BaseController.swift in Sources */,
 				A2804E1422A7305600ABF8F1 /* MovieDetailPresenter.swift in Sources */,
@@ -481,6 +491,7 @@
 				A2804DE022A4986700ABF8F1 /* HomeController.swift in Sources */,
 				A2804DA022A46FB900ABF8F1 /* AppDelegate.swift in Sources */,
 				A2804DF622A597FD00ABF8F1 /* LoginContract.swift in Sources */,
+				A27CE9DC22AEBC0F003494B8 /* SearchController.swift in Sources */,
 				A2804DFE22A5AEA600ABF8F1 /* GenreService.swift in Sources */,
 				A2804E0222A5B29F00ABF8F1 /* LoginPresenter.swift in Sources */,
 				A2804DC322A470F500ABF8F1 /* UIImageViewExtensions.swift in Sources */,
@@ -488,6 +499,7 @@
 				A2804DCE22A4737900ABF8F1 /* Date.swift in Sources */,
 				A27CE98722AAFCBF003494B8 /* TMDBAuthWebViewController.swift in Sources */,
 				A2804E0422A5B2C100ABF8F1 /* FavoritesPresenter.swift in Sources */,
+				A27CE9E022AEBD47003494B8 /* SearchPresenter.swift in Sources */,
 				A2804DBC22A470B700ABF8F1 /* ViewUtils.swift in Sources */,
 				A2804DFA22A59B9A00ABF8F1 /* BaseTableController.swift in Sources */,
 				A2804DE222A4987A00ABF8F1 /* FavoritesController.swift in Sources */,
